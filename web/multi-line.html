@@ -1,0 +1,79 @@
+<html>
+<div id="chartContainer">
+  <script src="d3/d3.min.js"></script>
+  <script src="http://dimplejs.org/dist/dimple.v2.1.6.min.js"></script>
+  <script type="text/javascript">
+    var svg = dimple.newSvg("#chartContainer", 590, 400);
+/*    d3.tsv("json/example_data.tsv", function (data) {
+      var myChart = new dimple.chart(svg, data);
+      myChart.setBounds(95, 25, 475, 335)
+      myChart.addCategoryAxis("x", ["Channel", "Price Tier"]);
+      myChart.addCategoryAxis("y", "Owner");
+      var z = myChart.addMeasureAxis("z", "Distribution");
+      var s = myChart.addSeries("Price Tier", dimple.plot.bubble);
+      s.aggregate = dimple.aggregateMethod.max;
+      z.overrideMax = 200;
+      myChart.addLegend(240, 10, 330, 20, "right");
+      myChart.draw();
+    });
+*/    
+   // Data hack required to get revenue and profit on the same axis, units are
+      // arbitrarily allocated to revenue but the values will be summed by date
+      var data = [
+          {"Month":"01/2013", "Metric":"Revenue", "Revenue/Profit":2000, "Units":14},
+          {"Month":"02/2013", "Metric":"Revenue", "Revenue/Profit":3201, "Units":13},
+          {"Month":"03/2013", "Metric":"Revenue", "Revenue/Profit":1940, "Units":15},
+          {"Month":"04/2013", "Metric":"Revenue", "Revenue/Profit":2500, "Units":11},
+          {"Month":"05/2013", "Metric":"Revenue", "Revenue/Profit":0, "Units":14},
+          {"Month":"01/2013", "Metric":"Profit", "Revenue/Profit":2000, "Units":0},
+          {"Month":"02/2013", "Metric":"Profit", "Revenue/Profit":2000, "Units":0},
+          {"Month":"03/2013", "Metric":"Profit", "Revenue/Profit":14000, "Units":0},
+          {"Month":"04/2013", "Metric":"Profit", "Revenue/Profit":3200, "Units":0},
+          {"Month":"05/2013", "Metric":"Profit", "Revenue/Profit":1200, "Units":0}
+      ];
+
+      var chart = new dimple.chart(svg, data);
+      chart.setBounds(60,20,680,330);
+
+      // Add your x axis - nothing unusual here
+      var x = chart.addCategoryAxis("x", "Month");
+      // First y axis is the combination axis for revenue and profit
+      var y1 = chart.addMeasureAxis("y", "Revenue/Profit");
+      // Second is the units only
+      var y2 = chart.addMeasureAxis("y", "Units");
+
+      // Plot the bars first - the order of series determines their dom position
+      // from back to front, this means bars are at the back.  It's important
+      // to note that the string here "Unit Sales" is NOT in the data.  Any string
+      // not in the data is just used to apply a label which can be used for colouring
+      // as it is here and will also appear in tool tips
+      var bars = chart.addSeries("Unit Sales", dimple.plot.bubble, [x,y2]);
+      // Use a simple line by metric for the other measures
+      var lines = chart.addSeries("Metric", dimple.plot.line, [x,y1]);
+
+      // Do a bit of styling to make it look nicer
+      lines.lineMarkers = true;
+      bars.barGap = 0.5;
+      // Colour the bars manually so they don't overwhelm the lines
+      chart.assignColor("Unit Sales", "black", "black", 0.15);
+        chart.assignColor("Metric", "red", "red", 0.15);
+        
+      x.dateParseFormat = "%m/%Y";
+      x.addOrderRule("Date");
+
+
+      // Here's how you add a legend for just one series.  Excluding the last parameter
+      // will include every series or an array of series can be passed to select more than
+      // one
+//      chart.addLegend(60, 5, 680, 10, "right", lines);
+      chart.addLegend(240, 10, 330, 20, "right");
+      chart.draw();
+
+      // Once Draw is called, this just changes the number format in the tooltips which for these particular
+      // numbers is a little too heavily rounded.  I assume your real data isn't like this
+      // so you probably won't want this line, but it's a useful tip anyway!
+      y1.tickFormat = ",d";    
+    
+  </script>
+</div>
+</html>

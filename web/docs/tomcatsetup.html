@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    <head>
+        <title>TODO supply a title</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    </head>
+    <body>
+        <div>
+            https://glassonionblog.wordpress.com/2011/04/08/tomcat-redirecting-traffic-from-port-8080-to-80-using-iptables/
+            Tomcat: redirecting traffic from port 8080 to 80 using iptables
+Posted on April 8, 2011 by badc0da
+First verify that Tomcat is running on port 8080. Run the following command
+
+# netstat -ntl
+The output will look something like
+
+Active Internet connections (only servers)
+Proto Recv-Q Send-Q Local Address               Foreign Address             State
+tcp        0      0 127.0.0.1:25                0.0.0.0:*                   LISTEN
+tcp        0      0 0.0.0.0:22                  0.0.0.0:*                   LISTEN
+tcp        0      0 ::ffff:127.0.0.1:8005       :::*                        LISTEN
+tcp        0      0 :::8009                     :::*                        LISTEN
+tcp        0      0 :::8080                     :::*                        LISTEN
+tcp        0      0 :::22                       :::*                        LISTEN
+Run the following command to redirect port 80 traffic to port 8080
+
+# iptables -t nat -A PREROUTING -p tcp --dport 80 -j REDIRECT --to-port 8080
+Run the folloing command to verify that redirect is working fine
+
+# iptables -t nat -L
+The output will look something like
+
+Chain PREROUTING (policy ACCEPT)
+target     prot opt source               destination
+REDIRECT   tcp  --  anywhere             anywhere            tcp dpt:http redir ports 8080
+
+Chain OUTPUT (policy ACCEPT)
+target     prot opt source               destination
+
+Chain POSTROUTING (policy ACCEPT)
+target     prot opt source               destination
+Run the following command to remove the routing
+
+# iptables -t nat -D PREROUTING -p tcp --dport 80 -j REDIRECT --to-port 8080</div>
+    </body>
+</html>

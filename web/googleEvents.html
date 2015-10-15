@@ -1,0 +1,125 @@
+<html>
+    <head>
+        <script type="text/javascript" src="https://www.google.com/jsapi"></script>
+        <script type="text/javascript">
+            //google.load("visualization", "1", {packages: ["motionchart"]});
+            //google.load("visualization", "1", {packages: ["corechart"]});
+            google.load('visualization', '1', {packages: ['timeline']});
+            google.setOnLoadCallback(drawChart);
+            var Eventdata = null;
+            
+            function drawChart() {
+                //        var query = new google.visualization.Query('http://www.gstatic.com/external_hosted/gstatic/charts/static/data.csv',
+                //          { csvColumns: ['string', 'number'], csvHasHeader: true });
+                var query = new google.visualization.Query('function/rankEvent.jsp',
+//                var query = new google.visualization.Query('json/crunchbase-quarters.csv',
+                        {csvColumns: ['string', 'string', 'number', 'number', 'number', 'number', 'number', 'number', 'number', 'number', 'number', 'number', 'string', 'string', 'string'], csvHasHeader: true});
+        query.send(handleQueryResponse);
+                query.send(handleQueryResponse);
+            }
+              function handleQueryResponse(response) {
+                  
+                /*                    var data = new google.visualization.DataTable({
+                 cols: [
+                 {id: 'team', label: 'Team', type: 'string'},
+                 {id: 'start', label: 'Season Start Date', type: 'date'},
+                 {id: 'end', label: 'Season End Date', type: 'date'}
+                 ],
+                 rows: [
+                 {c: [{v: 'Baltimore Ravens'}, {v: 'Date(2000, 8, 5)'}, {v: 'Date(2001, 1, 5)'}]},
+                 {c: [{v: 'New England Patriots'}, {v: 'Date(2001, 8, 5)'}, {v: 'Date(2002, 1, 5)'}]},
+                 {c: [{v: 'Tampa Bay Buccaneers'}, {v: 'Date(2002, 8, 5)'}, {v: 'Date(2003, 1, 5)'}]},
+                 {c: [{v: 'New England Patriots'}, {v: 'Date(2003, 8, 5)'}, {v: 'Date(2004, 1, 5)'}]},
+                 {c: [{v: 'New England Patriots'}, {v: 'Date(2004, 8, 5)'}, {v: 'Date(2005, 1, 5)'}]},
+                 {c: [{v: 'Pittsburgh Steelers'}, {v: 'Date(2005, 8, 5)'}, {v: 'Date(2006, 1, 5)'}]},
+                 {c: [{v: 'Indianapolis Colts'}, {v: 'Date(2006, 8, 5)'}, {v: 'Date(2007, 1, 5)'}]},
+                 {c: [{v: 'New York Giants'}, {v: 'Date(2007, 8, 5)'}, {v: 'Date(2008, 1, 5)'}]},
+                 {c: [{v: 'Pittsburgh Steelers'}, {v: 'Date(2008, 8, 5)'}, {v: 'Date(2009, 1, 5)'}]},
+                 {c: [{v: 'New Orleans Saints'}, {v: 'Date(2009, 8, 5)'}, {v: 'Date(2010, 1, 5)'}]},
+                 {c: [{v: 'Green Bay Packers'}, {v: 'Date(2010, 8, 5)'}, {v: 'Date(2011, 1, 5)'}]},
+                 {c: [{v: 'New York Giants'}, {v: 'Date(2011, 8, 5)'}, {v: 'Date(2012, 1, 5)'}]},
+                 {c: [{v: 'Baltimore Ravens'}, {v: 'Date(2012, 8, 5)'}, {v: 'Date(2013, 1, 5)'}]},
+                 {c: [{v: 'Seattle Seahawks'}, {v: 'Date(2013, 8, 5)'}, {v: 'Date(2014, 1, 5)'}]}
+                 ]
+                 });
+                 */
+                    if (response.isError()) {
+                             alert('Error in query: ' + response.getMessage() + ' ' +
+                                   response.getDetailedMessage());
+                             return;
+                           }
+
+                                        
+
+        var allText = response.getDataTable();
+        //alert()
+        //alert(allText.getNumberOfColumns())
+        
+        Eventdata = new google.visualization.DataTable();
+        Eventdata.addColumn({type: 'string', id: 'Room'});
+        Eventdata.addColumn({type: 'string', id: 'Name'});
+        Eventdata.addColumn({type: 'string', role: 'tooltip'});
+        Eventdata.addColumn({type: 'date', id: 'Start'});
+        Eventdata.addColumn({type: 'date', id: 'End'});
+        // Add empty rows
+        Eventdata.addRows(allText.getNumberOfRows());
+        var colorArray = [];
+        for (i = 0; i < allText.getNumberOfRows(); i++) {
+            Eventdata.setCell(i, 0, allText.getValue(i, 0));
+            Eventdata.setCell(i, 1, allText.getValue(i, 1));
+            Eventdata.setCell(i, 2, allText.getValue(i, 13));
+            Eventdata.setCell(i, 3, new Date(allText.getValue(i, 2), allText.getValue(i, 3), allText.getValue(i, 4), allText.getValue(i, 5), allText.getValue(i, 6)));
+            Eventdata.setCell(i, 4, new Date(allText.getValue(i, 7), allText.getValue(i, 8), allText.getValue(i, 9), allText.getValue(i, 10), allText.getValue(i, 11)));
+            var tempStr = allText.getValue(i, 12);
+            if (tempStr.charAt(0) == 'P')
+                colorArray[i] = '#0000FF';
+            else if (tempStr.charAt(0) == 'N')
+                colorArray[i] = '#FF0000';
+            else
+                colorArray[i] = '#cccccc';
+//          alert(colorArray[i]);
+        }
+        //alert(allText);
+        
+                var options = {
+                    height: 450,
+                    timeline: {
+                        groupByRowLabel: true
+                    },
+                    hAxis: {
+                        format: 'M/d/yy HH:mm a Z',
+                        gridlines: {count: 6}
+                    },
+                    vAxis: {
+                        gridlines: {color: 'none'},
+                        minValue: 0
+                    }
+                };
+                var chart = new google.visualization.Timeline(document.getElementById('chart_div'));
+                chart.draw(Eventdata, options);
+                //        var chart = new google.visualization.BubbleChart(document.getElementById('chart_div'));
+                //chart.draw(data, options);                
+                //             chart.draw(data, {width: 600, height:300});
+                var button = document.getElementById('change');
+
+                button.onclick = function () {
+
+                    // If the format option matches, change it to the new option,
+                    // if not, reset it to the original format.
+                    options.hAxis.format === 'M/d/yy HH:mm a Z' ?
+                            options.hAxis.format = 'MMM dd, yyyy hh:mm:ss a' :
+                            options.hAxis.format = 'M/d/yy HH:mm a Z';
+
+                    chart.draw(Eventdata, options);
+                };
+
+            }
+
+        </script>
+    </head>
+    <body>
+        <button  id="change" style="width: 800px; height: 300px;">change the time</button>
+
+        <div id="chart_div" style="width: 800px; height: 300px;"></div>
+    </body>
+</html>

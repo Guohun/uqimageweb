@@ -1,0 +1,28 @@
+{
+  "name": "University",
+  "Opion": "X",
+  "Weight": 13,
+  "children": [
+       {
+      "name": "UQ",
+       "Opion": "X",
+       "Weight": 2,
+       "children": [
+		{
+		  "name": "Studying",
+		   "Opion": "X"
+
+		},
+		{
+		  "name": "Living"
+		}
+      	]
+	},
+    {
+      "name": "QUT"
+    },
+    {
+      "name": "USQ"
+    }
+  ]
+}

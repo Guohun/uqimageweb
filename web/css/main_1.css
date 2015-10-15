@@ -1,0 +1,230 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : 01/09/2015, 9:06:10 PM
+    Author     : W.T.Chen
+*/
+
+/* Global,Common and Reset Settings
+-----------------------------------------------------------------------------*/
+html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abbr,acronym,address,big,cite,code,del,dfn,em,font,img,ins,kbd,q,s,samp,small,strike,strong,sub,sup,tt,var,b,u,i,center,dl,dt,dd,ol,ul,li,fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td{border:0 none;margin:0;padding:0;background:transparent none repeat scroll 0% 0%;outline-color:-moz-use-text-color;outline-style:none;outline-width:0;font-size:100%;vertical-align:baseline}
+html{background:#fff repeat-x scroll 0 400px;height:100%;}
+body{background:transparent  repeat-x scroll 100% 0;width:100%;height:100%;}
+*{margin:0;padding:0;border:none}
+img{border:0;-ms-interpolation-mode:bicubic}
+a,a:visited{text-decoration:none}
+a img,:link img,:visited img{border:none}
+ul,ol{list-style:none}
+address{font-style:normal}
+table{border-collapse:collapse;border-spacing:0}
+:link,:visited{text-decoration:none}
+
+
+/*Header 
+-----------------------------------------------------------------------------*/
+.header{position:fixed;  background:#49075e;color:rgb(239,239,239);height:82px;width:100%;}
+.header img{margin-left:30px}
+.header-inner h1{position: absolute; top: 10px; left: 248px; color:#fff;font-size:20px;font-family:Helvetica,"Trebuchet MS",sans-serif;font-weight:bold;}
+.header-inner h2{position: absolute; top: 35px; left: 248px; color:#fff;font-size:15px;font-family:Helvetica,"Trebuchet MS",sans-serif;font-weight:lighter;}
+
+.sperator{ position:fixed; background:#000;color:#fff;display:inline-block;width:100%; height:15px;}
+
+/*sidebar
+-----------------------------------------------------------------------------*/
+.sidebar-wrapper {display: block;position: fixed;margin-top:87px;height:100%; display:block;}
+.sidebar-nav {background-color:#E2E2E2; position: absolute; width: 200px;height:100%margin: 0;padding: 0px;list-style: none;}
+.sidebar-nav li {text-indent: 10px;line-height: 30px;}
+.sidebar-nav li a {display: block;text-indent: 20px;font-family:Helvetica,"Trebuchet MS",sans-serif;font-weight:light;text-decoration: none;color: #3399ff;}
+.sidebar-nav li a:hover {text-decoration: none;color: #ffffff;background: #49075e;}
+.sidebar-nav li a:active,
+.sidebar-nav li a:focus {text-decoration: none;}
+.sidebar-brand {height: 30px;font-size: 12px; line-height: 60px; font-family:Helvetica,"Trebuchet MS",sans-serif;font-weight:bold;background-color:#49075e; color:#ffffff;}
+.sidebar-nav li select{width:180px;}
+.sidebar-nav li .nav-input{width:180px;font-size: 12px;}
+.sidebar-nav .nav-button{ background-color: #49075e; color:#e2e2e2; font-size:15px;font-family:Helvetica,"Trebuchet MS",sans-serif;font-weight:lighter;margin-top:10px;width: 89px; margin-bottom:10px;}
+
+/* Main Panel
+-----------------------------------------------------------------------------*/
+.wrapper{margin:87px 205px;0px;0px;position:fixed;display:block;height:100%;width: -moz-calc(100% - 210px);width: -webkit-calc(100% - 210px);width: calc(100% - 210px);overflow: hidden; min-height: 50px;}
+
+.sub-wrapper{
+position: relative;
+float: left;
+left: 0.00%;
+width: 99.99%;
+height: -moz-calc(50% - 95px);
+height: -webkit-calc(50% - 95px);
+height: calc(50vh - 95px);
+margin-bottom: 1%;
+
+}
+.left-driver{
+   position: relative;
+   float: left;
+   width: 32.63%;
+   height: 100%;
+   border-color: #49075e;
+   border-style: solid;
+   border-width: 1px;
+}
+.mid-driver{
+   position: relative;
+   float: left;
+   margin-left:0.5%;
+   width: 32.63%;
+   height: 100%;
+   border-color: #49075e;
+border-style: solid;
+border-width: 1px;
+}
+.right-driver{
+position: relative;
+float: left;
+margin-left:0.5%;
+width: 32.63%;
+height: 100%;
+border-color: #49075e;
+border-style: solid;
+border-width: 1px;
+}
+
+.driver-menu{
+position:relative;
+display:block;
+height: 30px;
+line-height: 30px;
+text-align: center;
+font-size: 12px;
+font-family:Helvetica,"Trebuchet MS",sans-serif;font-weight:bold;background-color:#49075e; color:#ffffff;
+}
+.driver-content{
+position:relative;
+display:block;
+	height: -moz-calc(100% - 30px);
+ height: -webkit-calc(100% - 30px);
+ height: calc(100% - 30px);
+ width:100%;
+}
+.driver-contral{
+	position:relative;
+	display:block;
+	height: 30px;
+	line-height: 30px;
+	text-align: center;
+	font-size: 12px;
+	font-family:Helvetica,"Trebuchet MS",sans-serif;font-weight:bold;background-color:#E2E2E2; color:#ffffff;
+}
+/* Footer
+-----------------------------------------------------------------------------*/
+.footer{background:#49075e;clear:both; position:fixed; width:100%; height: 30px;bottom:0; }
+.footer h3 {margin-left: 30px; margin-top: 10px;  color:#fff; font-size:10px; font-style:  initial; font-family:Helvetica,"Trebuchet MS",sans-serif;font-weight:lighter;}
+
+
+    .map-canvas {
+        width: 100%;
+        height: 100%;
+        margin: 0;
+        padding: 0;
+    }
+
+    .stations, .stations svg {
+        position: absolute;
+    }
+
+    .stations svg {
+        width: 60px;
+        height: 20px;
+        padding-right: 100px;
+        font: 10px sans-serif;
+    }
+
+    .stations circle {
+        fill: brown;
+        stroke: black;
+        stroke-width: 1.5px;
+    }
+    .networknode {
+        stroke: #fff;
+        stroke-width: 1.5px;
+    }
+
+    .networklink {
+        stroke: #999;
+        stroke-opacity: .6;
+    }
+
+    
+    
+    .TopicHernode circle {
+    fill: #fff;
+    stroke: steelblue;
+    stroke-width: 2px;
+  }
+  
+    .TopicHernode text {
+    font-size:10px; 
+    font-family:sans-serif;
+  }
+    
+    
+
+    line.link {
+        stroke-width: 1px;
+        stroke: #999;
+        stroke-opacity: 0.6;
+    }
+
+    marker#arrow {
+        stroke: #999;
+        fill: #999;
+    }
+
+
+    
+    .ranklink {
+        fill: none;
+        stroke: #ccc;		
+        stroke-width: 1.5px;
+    }
+
+
+
+    .axis path, .axis line {
+        fill: none;
+        stroke: #000;
+        shape-rendering: crispEdges;
+    }
+
+    
+    		.bar.apples { fill: green; }
+		.bar.oranges { fill: orange; }
+		.bar.bananas { fill: yellow; }
+		.bar.plums { fill: purple; }
+
+
+    canvas { float: left; margin-bottom: 20px }
+    ul.weighted {
+        float: left;
+        display: block;
+        overflow: auto;
+        padding: 20px;
+        margin: 0 10px 20px 0;
+        background-color: #fff;
+        border: 4px solid #aaa;
+        border-radius: 20px;
+        -moz-border-radius: 20px;
+    }
+    ul.weighted li { display: inline }
+    ul.weighted li a { margin: 2px }
+    .centred p { width: 320px; float: left; margin-left: 20px }
+    .preright { float: left }
+    .huge { font-family: Impact,sans-serif; font-size: 56px }
+    .large { font-family: 'Arial Black',sans-serif; font-size: 40px }
+    .medium { font-family: Verdana,sans-serif; font-size: 18px }
+    .small { font-family: Georgia,sans-serif; font-size: 11px }
+    a.red { color: #f00 }
+    a.green { color: #0c0 }
+    a.purple { color: #f09 }

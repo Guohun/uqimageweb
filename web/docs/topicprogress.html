@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    <head>
+        <title>TODO supply a title</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+        <style type="text/css" media="screen">
+            #play-progress {
+                width: 910px;
+                margin-bottom: 20px;
+                background-color: #28AADE;
+                height: 36px;
+                position: relative;
+                border-radius: 20px;
+            }
+
+            #play-svg {
+                border-radius: 20px;
+            }
+
+            #progress-bar {
+                fill:#666;
+            }
+
+            #play-control {
+                width:37px;
+                height:36px;
+                background:url("http://www.bloomberg.com/image/idAx.BJxL1Lc.png") 37px 0px;
+                cursor: pointer;
+                position: absolute;
+            }
+
+            #play-control.play {
+                background:url("http://www.bloomberg.com/image/idAx.BJxL1Lc.png") 37px 0px;
+            }
+            #play-control.play:hover {
+                background:url("http://www.bloomberg.com/image/idAx.BJxL1Lc.png") 0px 0px;
+            }
+            #play-control.pause {
+                background:url("http://www.bloomberg.com/image/idAx.BJxL1Lc.png") 37px -36px;
+            }
+            #play-control.pause:hover {
+                background:url("http://www.bloomberg.com/image/idAx.BJxL1Lc.png") 0px -36px;
+            }
+            #play-control.replay {
+                background:url("http://www.bloomberg.com/image/idAx.BJxL1Lc.png") 37px -72px;
+            }
+            #play-control.replay:hover {
+                background:url("http://www.bloomberg.com/image/idAx.BJxL1Lc.png") 0px -72px;
+            }
+
+            #scrubber {
+                width:873px;
+                height:36px;
+                position:absolute;
+                top:0;
+                left:37px;
+            }
+            #display-data {
+                font-family: "arial","helvetica";
+                font-size: 60px;
+                color:#666;
+            }
+
+            #main {
+                height: 300px;
+                width: 300px;
+
+            }
+
+            circle.na {
+                fill: #333;
+            }
+            circle.zero {
+                fill: #c00;
+            }
+            circle.one {
+                fill: #6c0;
+            }
+        </style>
+        <script src="../d3/jquery.js"></script>
+        <script src="../d3/d3.min.js" charset="utf-8"></script>
+        <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8/jquery.js" ></script>
+        <script src="http://malsup.github.com/jquery.form.js" ></script>
+    </head>
+    <body>
+        <div id="input">
+            <form oninput="output.value = (input.value / 240).toFixed(3)" style="top:10px;left:10px;">
+                <input id="input" type="range" min="0" max="240" value="60" style="width:240px;">
+                <i>k</i> = <output name="output" for="input">0.250</output>
+            </form>
+        </div>
+        <div id="main">
+        </div>
+        <div id="play-progress">
+            <div id="play-control" class="play"></div>
+            <div id="scrubber"></div>
+        </div>
+
+        <div id="display-data">Hi</div>
+        <script>
+            function fix(k) {
+                var t0, t1 = k * 2 * Math.PI;
+
+                // Solve for theta numerically.
+                if (k > 0 && k < 1) {
+                    t1 = Math.pow(12 * k * Math.PI, 1 / 3);
+                    for (var i = 0; i < 10; ++i) {
+                        t0 = t1;
+                        t1 = (Math.sin(t0) - t0 * Math.cos(t0) + 2 * k * Math.PI) / (1 - Math.cos(t0));
+                    }
+                    k = (1 - Math.cos(t1 / 2)) / 2;
+                }
+                return k;
+            }
+
+
+
+
+            function  doCompletion() {
+                var options = {
+                    beforeSend: function () {
+                        $("#progressbox").show();
+                        // clear everything
+                        $("#progressbar").width('0%');
+                        $("#message").empty();
+                        $("#percent").html("0%");
+                    },
+                    uploadProgress: function (event, position, total, percentComplete) {
+                        $("#progressbar").width(percentComplete + '%');
+                        $("#percent").html(percentComplete + '%');
+
+                        // change message text to red after 50%
+                        if (percentComplete > 50) {
+                            $("#message").html("<font color='red'>File Upload is in progress</font>");
+                        }
+                    },
+                    success: function () {
+                        $("#progressbar").width('100%');
+                        $("#percent").html('100%');
+                    },
+                    complete: function (response) {
+                        $("#message").html("<font color='blue'>Your file has been uploaded!</font>");
+                    },
+                    error: function () {
+                        $("#message").html("<font color='red'> ERROR: unable to upload files</font>");
+                    }
+                };
+                  $("#ProgressBarView").ajaxForm(options);
+            }
+        </script>
+
+
+
+        <form id="ProgressBarView" action="ProgressBarView" method="post" >
+            <input id="input" type="range" min="0" max="240" value="60" style="width:240px;">
+            <i>k</i> = <output name="output" for="input">0.250</output>
+            <input  type="submit" value="Ajax File Upload">
+            <input  id="edit-add-btn" type="button" value="Add"  onclick="doCompletion();">   
+            <div id="progressbox">
+                <div id="progressbar"></div>
+                <div id="percent">0%</div>
+            </div>
+            <br />
+
+            <div id="message"></div>
+        </form>
+    </body>
+
+
+</html>

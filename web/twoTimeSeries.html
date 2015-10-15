@@ -1,0 +1,147 @@
+<html>
+    <head>
+        <meta charset="utf-8">
+        <script src="./d3/d3.v3.js"></script>
+        <script src="./d3/jquery.js"></script>
+    </head>    
+    <div id="chartContainer">
+
+        <script src="d3/dimple.v2.1.6.min.js"></script>
+        <script type="text/javascript">
+            var svg = dimple.newSvg("#chartContainer", 590, 400);
+
+            // The default data set for these examples has regular times
+            // and the point of this demo is to show the time axis
+            // functionality, therefore a small bespoke data set is used.
+            DrawRankChart(500, 500);
+            function DrawRankChart(width, height) {
+
+//            $(window).on("location_move", function (event, result) {
+
+                //$.get("function/rankEvent_1.jsp")            
+//                    .done(function (data) {
+//                $.get("function/rankEvent_1.jsp")
+  //                      .done(function (graph) {
+                            //var temp=graph.trim();
+                                var temp='[ {"EventName": "uqxcourses-uq:", "StartTime":"Thu 23 Jul 2015 05:26", "Value": "5.598438816686623", "Opion":"X"},{"EventName": "usceduau-uq:", "StartTime":"Sat 4 Jul 2015 10:14", "Value": "6.287322751500658", "Opion":"P"},{"EventName": "4th-annual-international-feminist-journal-of-politics-conference-held-in-brisbane-in-june-2015-master:", "StartTime":"Thu 18 Jun 2015 08:50", "Value": "1.933846044080254", "Opion":"P"},{"EventName": "alex-j-bellamy-qld:", "StartTime":"Tue 8 Sep 2015 04:37", "Value": "3.2419459292914077", "Opion":"P"},{"EventName": "dr-krystal-uq:", "StartTime":"Mon 6 Jul 2015 05:28", "Value": "2.2015568840605093", "Opion":"X"},{"EventName": "dr-krystal-uq:", "StartTime":"Mon 6 Jul 2015 05:28", "Value": "6.636447418021561", "Opion":"X"},{"EventName": "dr-krystal-uq:", "StartTime":"Mon 6 Jul 2015 05:28", "Value": "2.5091898538975608", "Opion":"X"},{"EventName": "dr-krystal-uq:", "StartTime":"Mon 6 Jul 2015 05:28", "Value": "9.086657084413304", "Opion":"X"},{"EventName": "dr-krystal-uq:", "StartTime":"Mon 6 Jul 2015 05:28", "Value": "4.641313315229025", "Opion":"X"},{"EventName": "dr-krystal-uq:", "StartTime":"Mon 6 Jul 2015 05:28", "Value": "7.879738731395522", "Opion":"X"},{"EventName": "dr-krystal-uq:", "StartTime":"Mon 6 Jul 2015 05:31", "Value": "1.7941460609680915", "Opion":"X"},{"EventName": "dr-krystal-uq:", "StartTime":"Mon 6 Jul 2015 05:31", "Value": "4.102161644385153", "Opion":"X"},{"EventName": "dr-krystal-uq:", "StartTime":"Mon 6 Jul 2015 05:28", "Value": "0.6185825475314499", "Opion":"X"},{"EventName": "dr-krystal-uq:", "StartTime":"Mon 6 Jul 2015 05:28", "Value": "6.893105719227449", "Opion":"X"},{"EventName": "dr-krystal-uq:", "StartTime":"Mon 6 Jul 2015 05:28", "Value": "3.4774346441298762", "Opion":"X"},{"EventName": "dr-krystal-uq:", "StartTime":"Mon 6 Jul 2015 05:28", "Value": "7.020116451752143", "Opion":"X"},{"EventName": "dr-krystal-uq:", "StartTime":"Mon 6 Jul 2015 05:28", "Value": "0.43652497624375286", "Opion":"X"},{"EventName": "dr-krystal-uq:", "StartTime":"Mon 6 Jul 2015 05:28", "Value": "4.608631724973666", "Opion":"X"},{"EventName": "dr-krystal-uq:", "StartTime":"Mon 6 Jul 2015 05:31", "Value": "2.2613222547908283", "Opion":"X"},{"EventName": "dr-krystal-uq:", "StartTime":"Mon 6 Jul 2015 05:31", "Value": "5.07639849047715", "Opion":"X"},{"EventName": "jcu-uq:", "StartTime":"Mon 13 Jul 2015 12:49", "Value": "5.387804542576225", "Opion":"N"},{"EventName": "jcu-uq:", "StartTime":"Mon 13 Jul 2015 12:49", "Value": "9.825063841916812", "Opion":"N"},{"EventName": "jcu-uq:", "StartTime":"Mon 13 Jul 2015 12:49", "Value": "5.691075062402957", "Opion":"N"},{"EventName": "jcu-uq:", "StartTime":"Mon 13 Jul 2015 12:49", "Value": "1.3778479878743433", "Opion":"N"},{"EventName": "jcu-uq:", "StartTime":"Mon 13 Jul 2015 12:49", "Value": "7.007065615483769", "Opion":"N"},{"EventName": "jcu-uq:", "StartTime":"Mon 13 Jul 2015 12:49", "Value": "8.933992681372159", "Opion":"N"},{"EventName": "jcu-uq:", "StartTime":"Thu 16 Jul 2015 08:21", "Value": "1.2968448818434009", "Opion":"N"},{"EventName": "jcu-uq:", "StartTime":"Thu 16 Jul 2015 08:21", "Value": "9.90360885454582", "Opion":"N"},{"EventName": "jcu-uq:", "StartTime":"Mon 13 Jul 2015 12:49", "Value": "2.5112400146953706", "Opion":"P"},{"EventName": "jcu-uq:", "StartTime":"Mon 13 Jul 2015 12:49", "Value": "6.212903557520279", "Opion":"P"},{"EventName": "jcu-uq:", "StartTime":"Mon 13 Jul 2015 12:49", "Value": "4.453566595121345", "Opion":"P"},{"EventName": "jcu-uq:", "StartTime":"Mon 13 Jul 2015 12:49", "Value": "4.008060854034246", "Opion":"P"},{"EventName": "jcu-uq:", "StartTime":"Mon 13 Jul 2015 12:49", "Value": "1.994395224345038", "Opion":"P"},{"EventName": "jcu-uq:", "StartTime":"Mon 13 Jul 2015 12:49", "Value": "9.971053011246108", "Opion":"P"},{"EventName": "jcu-uq:", "StartTime":"Thu 16 Jul 2015 08:21", "Value": "4.014838110932301", "Opion":"P"},{"EventName": "jcu-uq:", "StartTime":"Thu 16 Jul 2015 08:21", "Value": "2.5833722753045993", "Opion":"P"},{"EventName": "jcu-uq:", "StartTime":"Mon 13 Jul 2015 12:49", "Value": "8.50047667372028", "Opion":"N"},{"EventName": "jcu-uq:", "StartTime":"Mon 13 Jul 2015 12:49", "Value": "8.281383749564275", "Opion":"N"},{"EventName": "jcu-uq:", "StartTime":"Mon 13 Jul 2015 12:49", "Value": "4.739639201581136", "Opion":"N"},{"EventName": "jcu-uq:", "StartTime":"Mon 13 Jul 2015 12:49", "Value": "9.14320089559337", "Opion":"N"},{"EventName": "jcu-uq:", "StartTime":"Mon 13 Jul 2015 12:49", "Value": "2.9664351985293305", "Opion":"N"},{"EventName": "jcu-uq:", "StartTime":"Mon 13 Jul 2015 12:49", "Value": "4.291456811204437", "Opion":"N"},{"EventName": "jcu-uq:", "StartTime":"Thu 16 Jul 2015 08:21", "Value": "7.806143826352767", "Opion":"N"},{"EventName": "jcu-uq:", "StartTime":"Thu 16 Jul 2015 08:21", "Value": "3.0051015748279797", "Opion":"N"},{"EventName": "jcu-uq:", "StartTime":"Mon 13 Jul 2015 12:49", "Value": "2.2098743834217363", "Opion":"P"},{"EventName": "jcu-uq:", "StartTime":"Mon 13 Jul 2015 12:49", "Value": "5.1786535728343015", "Opion":"P"},{"EventName": "jcu-uq:", "StartTime":"Mon 13 Jul 2015 12:49", "Value": "3.2947636813186865", "Opion":"P"},{"EventName": "jcu-uq:", "StartTime":"Mon 13 Jul 2015 12:49", "Value": "8.477702354158907", "Opion":"P"},{"EventName": "jcu-uq:", "StartTime":"Mon 13 Jul 2015 12:49", "Value": "9.629491440500498", "Opion":"P"},{"EventName": "jcu-uq:", "StartTime":"Mon 13 Jul 2015 12:49", "Value": "0.6996524309013263", "Opion":"P"},{"EventName": "jcu-uq:", "StartTime":"Thu 16 Jul 2015 08:21", "Value": "1.4229564239879977", "Opion":"P"},{"EventName": "jcu-uq:", "StartTime":"Thu 16 Jul 2015 08:21", "Value": "7.499733782773681", "Opion":"P"},{"EventName": "kark-group-uq:", "StartTime":"Wed 8 Jul 2015 09:28", "Value": "5.0932260067370265", "Opion":"X"},{"EventName": "naturecomms-uq:", "StartTime":"Wed 22 Jul 2015 10:29", "Value": "6.981464059950535", "Opion":"X"},{"EventName": "uq-gpem-uq:", "StartTime":"Tue 7 Jul 2015 03:29", "Value": "2.5272206376107818", "Opion":"P"},{"EventName": "uq-gpem-uq:", "StartTime":"Tue 7 Jul 2015 03:29", "Value": "3.5315090137877547", "Opion":"P"},{"EventName": "uq-gpem-uq:", "StartTime":"Tue 7 Jul 2015 03:29", "Value": "2.6081715103685923", "Opion":"P"},{"EventName": "uq-gpem-uq:", "StartTime":"Tue 7 Jul 2015 03:29", "Value": "8.711066332728578", "Opion":"P"},{"EventName": "uq-gpem-uq:", "StartTime":"Tue 7 Jul 2015 03:29", "Value": "9.313090661062533", "Opion":"P"},{"EventName": "uq-gpem-uq:", "StartTime":"Tue 7 Jul 2015 03:29", "Value": "9.665468849712349", "Opion":"P"},{"EventName": "uq-gpem-uq:", "StartTime":"Fri 17 Jul 2015 02:52", "Value": "1.7979454996726052", "Opion":"P"},{"EventName": "uq-gpem-uq:", "StartTime":"Fri 17 Jul 2015 02:52", "Value": "8.202945390758405", "Opion":"P"},{"EventName": "uq-gpem-uq:", "StartTime":"Tue 7 Jul 2015 03:29", "Value": "8.731834190790725", "Opion":"X"},{"EventName": "uq-gpem-uq:", "StartTime":"Tue 7 Jul 2015 03:29", "Value": "1.9009213143887294", "Opion":"X"},{"EventName": "uq-gpem-uq:", "StartTime":"Tue 7 Jul 2015 03:29", "Value": "1.9573566098221085", "Opion":"X"},{"EventName": "uq-gpem-uq:", "StartTime":"Tue 7 Jul 2015 03:29", "Value": "2.958623423399902", "Opion":"X"},{"EventName": "uq-gpem-uq:", "StartTime":"Tue 7 Jul 2015 03:29", "Value": "4.992947637567128", "Opion":"X"},{"EventName": "uq-gpem-uq:", "StartTime":"Tue 7 Jul 2015 03:29", "Value": "9.319119034317367", "Opion":"X"},{"EventName": "uq-gpem-uq:", "StartTime":"Fri 17 Jul 2015 02:52", "Value": "5.510841151402545", "Opion":"X"},{"EventName": "uq-gpem-uq:", "StartTime":"Fri 17 Jul 2015 02:52", "Value": "4.279508136492924", "Opion":"X"},{"EventName": "uq-gpem-uq:", "StartTime":"Tue 7 Jul 2015 03:29", "Value": "9.684433973402133", "Opion":"P"},{"EventName": "uq-gpem-uq:", "StartTime":"Tue 7 Jul 2015 03:29", "Value": "6.498338072649121", "Opion":"P"},{"EventName": "uq-gpem-uq:", "StartTime":"Tue 7 Jul 2015 03:29", "Value": "1.0702926482485053", "Opion":"P"},{"EventName": "uq-gpem-uq:", "StartTime":"Tue 7 Jul 2015 03:29", "Value": "8.254171964494972", "Opion":"P"},{"EventName": "uq-gpem-uq:", "StartTime":"Tue 7 Jul 2015 03:29", "Value": "9.748237766137605", "Opion":"P"},{"EventName": "uq-gpem-uq:", "StartTime":"Tue 7 Jul 2015 03:29", "Value": "9.92463129037392", "Opion":"P"},{"EventName": "uq-gpem-uq:", "StartTime":"Fri 17 Jul 2015 02:52", "Value": "4.969538163823637", "Opion":"P"},{"EventName": "uq-gpem-uq:", "StartTime":"Fri 17 Jul 2015 02:52", "Value": "7.013434427520685", "Opion":"P"},{"EventName": "uq-gpem-uq:", "StartTime":"Tue 7 Jul 2015 03:29", "Value": "9.146105698209752", "Opion":"X"},{"EventName": "uq-gpem-uq:", "StartTime":"Tue 7 Jul 2015 03:29", "Value": "9.382450610216987", "Opion":"X"},{"EventName": "uq-gpem-uq:", "StartTime":"Tue 7 Jul 2015 03:29", "Value": "4.146861548192314", "Opion":"X"},{"EventName": "uq-gpem-uq:", "StartTime":"Tue 7 Jul 2015 03:29", "Value": "2.531379997969063", "Opion":"X"},{"EventName": "uq-gpem-uq:", "StartTime":"Tue 7 Jul 2015 03:29", "Value": "5.4515258829108015", "Opion":"X"},{"EventName": "uq-gpem-uq:", "StartTime":"Tue 7 Jul 2015 03:29", "Value": "7.350344420772819", "Opion":"X"},{"EventName": "uq-gpem-uq:", "StartTime":"Fri 17 Jul 2015 02:52", "Value": "2.553614801080907", "Opion":"X"},{"EventName": "uq-gpem-uq:", "StartTime":"Fri 17 Jul 2015 02:52", "Value": "7.447720113333132", "Opion":"X"},{"EventName": "uq-gpem-uq:", "StartTime":"Tue 7 Jul 2015 03:29", "Value": "8.316296140769065", "Opion":"P"},{"EventName": "uq-gpem-uq:", "StartTime":"Tue 7 Jul 2015 03:29", "Value": "4.280453384611138", "Opion":"P"},{"EventName": "uq-gpem-uq:", "StartTime":"Tue 7 Jul 2015 03:29", "Value": "7.88609502763426", "Opion":"P"},{"EventName": "uq-gpem-uq:", "StartTime":"Tue 7 Jul 2015 03:29", "Value": "7.396663256341272", "Opion":"P"},{"EventName": "uq-gpem-uq:", "StartTime":"Tue 7 Jul 2015 03:29", "Value": "2.7856592187852556", "Opion":"P"},{"EventName": "uq-gpem-uq:", "StartTime":"Tue 7 Jul 2015 03:29", "Value": "5.306544293023686", "Opion":"P"},{"EventName": "uq-gpem-uq:", "StartTime":"Fri 17 Jul 2015 02:52", "Value": "5.369510565377324", "Opion":"P"},{"EventName": "uq-gpem-uq:", "StartTime":"Fri 17 Jul 2015 02:52", "Value": "7.1497290207176505", "Opion":"P"},{"EventName": "uq-gpem-uq:", "StartTime":"Tue 7 Jul 2015 03:29", "Value": "6.773831113940446", "Opion":"X"},{"EventName": "uq-gpem-uq:", "StartTime":"Tue 7 Jul 2015 03:29", "Value": "4.403834510525682", "Opion":"X"},{"EventName": "uq-gpem-uq:", "StartTime":"Tue 7 Jul 2015 03:29", "Value": "0.5669950709787075", "Opion":"X"},{"EventName": "uq-gpem-uq:", "StartTime":"Tue 7 Jul 2015 03:29", "Value": "8.514707693771054", "Opion":"X"},{"EventName": "uq-gpem-uq:", "StartTime":"Tue 7 Jul 2015 03:29", "Value": "8.662144203173618", "Opion":"X"},{"EventName": "uq-gpem-uq:", "StartTime":"Tue 7 Jul 2015 03:29", "Value": "5.314879852028529", "Opion":"X"},{"EventName": "uq-gpem-uq:", "StartTime":"Fri 17 Jul 2015 02:52", "Value": "3.743273684319528", "Opion":"X"},{"EventName": "uq-gpem-uq:", "StartTime":"Fri 17 Jul 2015 02:52", "Value": "1.3802250726458443", "Opion":"X"},{"EventName": "uq-gpem-uq:", "StartTime":"Tue 7 Jul 2015 03:29", "Value": "7.944913542648364", "Opion":"P"},{"EventName": "uq-gpem-uq:", "StartTime":"Tue 7 Jul 2015 03:29", "Value": "4.659307659297869", "Opion":"P"},{"EventName": "uq-gpem-uq:", "StartTime":"Tue 7 Jul 2015 03:29", "Value": "4.181722506669018", "Opion":"P"},{"EventName": "uq-gpem-uq:", "StartTime":"Tue 7 Jul 2015 03:29", "Value": "0.5551507055553739", "Opion":"P"},{"EventName": "uq-gpem-uq:", "StartTime":"Tue 7 Jul 2015 03:29", "Value": "9.123528572843496", "Opion":"P"},{"EventName": "uq-gpem-uq:", "StartTime":"Tue 7 Jul 2015 03:29", "Value": "1.561201212993485", "Opion":"P"},{"EventName": "uq-gpem-uq:", "StartTime":"Fri 17 Jul 2015 02:52", "Value": "4.0352059935843325", "Opion":"P"},{"EventName": "uq-gpem-uq:", "StartTime":"Fri 17 Jul 2015 02:52", "Value": "0.12434076610233546", "Opion":"P"},{"EventName": "uq-gpem-uq:", "StartTime":"Tue 7 Jul 2015 03:29", "Value": "6.637158651649458", "Opion":"X"},{"EventName": "uq-gpem-uq:", "StartTime":"Tue 7 Jul 2015 03:29", "Value": "9.856447308595778", "Opion":"X"},{"EventName": "uq-gpem-uq:", "StartTime":"Tue 7 Jul 2015 03:29", "Value": "7.7852154446265285", "Opion":"X"},{"EventName": "uq-gpem-uq:", "StartTime":"Tue 7 Jul 2015 03:29", "Value": "3.92697962740204", "Opion":"X"},{"EventName": "uq-gpem-uq:", "StartTime":"Tue 7 Jul 2015 03:29", "Value": "6.518856918602061", "Opion":"X"},{"EventName": "uq-gpem-uq:", "StartTime":"Tue 7 Jul 2015 03:29", "Value": "3.4833838368184935", "Opion":"X"},{"EventName": "uq-gpem-uq:", "StartTime":"Fri 17 Jul 2015 02:52", "Value": "5.19047168059393", "Opion":"X"},{"EventName": "uq-gpem-uq:", "StartTime":"Fri 17 Jul 2015 02:52", "Value": "5.461048739968931", "Opion":"X"},{"EventName": "uq-news-uq:", "StartTime":"Sat 11 Jul 2015 09:14", "Value": "8.678733598127398", "Opion":"P"},{"EventName": "uq-news-uq:", "StartTime":"Sat 11 Jul 2015 09:14", "Value": "3.013592331867494", "Opion":"P"},{"EventName": "uq-news-uq:", "StartTime":"Sat 11 Jul 2015 09:14", "Value": "2.725301152101105", "Opion":"P"},{"EventName": "uq-news-uq:", "StartTime":"Sat 11 Jul 2015 09:14", "Value": "3.0272144877379805", "Opion":"P"},{"EventName": "uq-news-uq:", "StartTime":"Sat 11 Jul 2015 09:14", "Value": "2.2412603892521044", "Opion":"P"},{"EventName": "uq-news-uq:", "StartTime":"Sat 11 Jul 2015 09:14", "Value": "1.4457007413949474", "Opion":"P"},{"EventName": "uq-news-uq:", "StartTime":"Sat 18 Jul 2015 06:54", "Value": "0.939727451443948", "Opion":"P"},{"EventName": "uq-news-uq:", "StartTime":"Sat 18 Jul 2015 06:54", "Value": "6.247695452728143", "Opion":"P"},{"EventName": "uq-news-uq:", "StartTime":"Sat 11 Jul 2015 09:14", "Value": "5.201662361674445", "Opion":"X"},{"EventName": "uq-news-uq:", "StartTime":"Sat 11 Jul 2015 09:14", "Value": "0.36357654684700647", "Opion":"X"},{"EventName": "uq-news-uq:", "StartTime":"Sat 11 Jul 2015 09:14", "Value": "2.917364834762518", "Opion":"X"},{"EventName": "uq-news-uq:", "StartTime":"Sat 11 Jul 2015 09:14", "Value": "8.23043427496026", "Opion":"X"},{"EventName": "uq-news-uq:", "StartTime":"Sat 11 Jul 2015 09:14", "Value": "8.816740266418782", "Opion":"X"},{"EventName": "uq-news-uq:", "StartTime":"Sat 11 Jul 2015 09:14", "Value": "3.351303100366565", "Opion":"X"},{"EventName": "uq-news-uq:", "StartTime":"Sat 18 Jul 2015 06:54", "Value": "2.0638439395335437", "Opion":"X"},{"EventName": "uq-news-uq:", "StartTime":"Sat 18 Jul 2015 06:54", "Value": "3.596161391420921", "Opion":"X"},{"EventName": "uq-news-uq:", "StartTime":"Sat 11 Jul 2015 09:14", "Value": "6.608356592460927", "Opion":"P"},{"EventName": "uq-news-uq:", "StartTime":"Sat 11 Jul 2015 09:14", "Value": "2.160852181233998", "Opion":"P"},{"EventName": "uq-news-uq:", "StartTime":"Sat 11 Jul 2015 09:14", "Value": "5.827634207754827", "Opion":"P"},{"EventName": "uq-news-uq:", "StartTime":"Sat 11 Jul 2015 09:14", "Value": "6.345711532220232", "Opion":"P"},{"EventName": "uq-news-uq:", "StartTime":"Sat 11 Jul 2015 09:14", "Value": "7.6332136547611205", "Opion":"P"},{"EventName": "uq-news-uq:", "StartTime":"Sat 11 Jul 2015 09:14", "Value": "2.5443766217073693", "Opion":"P"},{"EventName": "uq-news-uq:", "StartTime":"Sat 18 Jul 2015 06:54", "Value": "5.636772565380395", "Opion":"P"},{"EventName": "uq-news-uq:", "StartTime":"Sat 18 Jul 2015 06:54", "Value": "3.117209290314168", "Opion":"P"},{"EventName": "uq-news-uq:", "StartTime":"Sat 11 Jul 2015 09:14", "Value": "3.7604379240182952", "Opion":"X"},{"EventName": "uq-news-uq:", "StartTime":"Sat 11 Jul 2015 09:14", "Value": "0.8915674825459496", "Opion":"X"},{"EventName": "uq-news-uq:", "StartTime":"Sat 11 Jul 2015 09:14", "Value": "2.329147123339128", "Opion":"X"},{"EventName": "uq-news-uq:", "StartTime":"Sat 11 Jul 2015 09:14", "Value": "6.767515659235705", "Opion":"X"},{"EventName": "uq-news-uq:", "StartTime":"Sat 11 Jul 2015 09:14", "Value": "1.09887764840629", "Opion":"X"},{"EventName": "uq-news-uq:", "StartTime":"Sat 11 Jul 2015 09:14", "Value": "9.853531151945592", "Opion":"X"},{"EventName": "uq-news-uq:", "StartTime":"Sat 18 Jul 2015 06:54", "Value": "0.6606261014478798", "Opion":"X"},{"EventName": "uq-news-uq:", "StartTime":"Sat 18 Jul 2015 06:54", "Value": "2.40958396114904", "Opion":"X"},{"EventName": "uq-sport-university:", "StartTime":"Sat 27 Jun 2015 03:56", "Value": "6.428912078907947", "Opion":"X"},{"EventName": "uqalumni-qld:", "StartTime":"Sun 28 Jun 2015 06:17", "Value": "0.9881606304636015", "Opion":"P"},{"EventName": "uqdi-news-uq:", "StartTime":"Fri 3 Jul 2015 11:25", "Value": "6.094460618306179", "Opion":"P"},{"EventName": "uqdi-news-uq:", "StartTime":"Fri 3 Jul 2015 11:25", "Value": "3.0471484671228333", "Opion":"P"},{"EventName": "uqdi-news-uq:", "StartTime":"Fri 3 Jul 2015 11:25", "Value": "0.5189585044871459", "Opion":"P"},{"EventName": "uqdi-news-uq:", "StartTime":"Fri 3 Jul 2015 11:25", "Value": "5.127989035742255", "Opion":"P"},{"EventName": "uqdi-news-uq:", "StartTime":"Fri 3 Jul 2015 11:25", "Value": "2.0070337824840276", "Opion":"P"},{"EventName": "uqdi-news-uq:", "StartTime":"Fri 3 Jul 2015 11:25", "Value": "4.770424989908191", "Opion":"P"},{"EventName": "uqdi-news-uq:", "StartTime":"Fri 3 Jul 2015 11:28", "Value": "1.5447581130331212", "Opion":"P"},{"EventName": "uqdi-news-uq:", "StartTime":"Fri 3 Jul 2015 11:28", "Value": "6.650031700208875", "Opion":"P"},{"EventName": "uqdi-news-uq:", "StartTime":"Fri 3 Jul 2015 11:25", "Value": "5.689166636127535", "Opion":"P"},{"EventName": "uqdi-news-uq:", "StartTime":"Fri 3 Jul 2015 11:25", "Value": "2.11127616553871", "Opion":"P"},{"EventName": "uqdi-news-uq:", "StartTime":"Fri 3 Jul 2015 11:25", "Value": "3.4799074745332845", "Opion":"P"},{"EventName": "uqdi-news-uq:", "StartTime":"Fri 3 Jul 2015 11:25", "Value": "6.1181333274377", "Opion":"P"},{"EventName": "uqdi-news-uq:", "StartTime":"Fri 3 Jul 2015 11:25", "Value": "7.078832882206002", "Opion":"P"},{"EventName": "uqdi-news-uq:", "StartTime":"Fri 3 Jul 2015 11:25", "Value": "2.603555976478754", "Opion":"P"},{"EventName": "uqdi-news-uq:", "StartTime":"Fri 3 Jul 2015 11:28", "Value": "6.288996181604089", "Opion":"P"},{"EventName": "uqdi-news-uq:", "StartTime":"Fri 3 Jul 2015 11:28", "Value": "6.8718589330956", "Opion":"P"},{"EventName": "uqnorthamerica-uq:", "StartTime":"Thu 23 Jul 2015 06:30", "Value": "5.030275692753129", "Opion":"X"}]';
+                            //  var temp='[ {"EventName": "4th-annual-international-feminist:", "StartTime":"Thu 18 Jun 2015 08:50", "Value": "5.7361970320297555", "Opion":"P"},\n\
+                              //          {"EventName": "uq-sport-university:", "StartTime":"Sat 27 Jun 2015 03:56", "Value": "5.750482386576214", "Opion":"X"},\n\
+                                //        {"EventName": "uqalumni-qld:", "StartTime":"Sun 28 Jun 2015 06:17", "Value": "0.6123573102992019", "Opion":"N"}]';
+//                        var temp='[ {"EventName": "UQ_#gbr", "StartTime":"1435692228111", "Value": "0.7528445411153117", "Opion":"X"}, \
+  //                                          {"EventName": "AB_#gbr", "StartTime":"435692228111", "Value": "0.7528445411153117", "Opion":"X"} \
+    //                                    ]';
+                            // var temp='[ {"EventName": "uqnorthamerica-UQ:", "StartTime":"Thu 23 May 2015 06:30", "Value": "1.3752762876218738", "Opion":"X"},{"EventName": "uqxcourses-UQ-Event", "StartTime":"Thu 23 Jul 2015 05:26", "Value": "1.7749090326800643", "Opion":"X"},{"EventName": "ssceduau-UQ", "StartTime":"Sat 4 Jul 2015 10:14", "Value": "2.9282170027727505", "Opion":"P"} ]';
+                            var data =JSON.parse(temp);
+              
+                                //{'Event':[{'EventName':'UQ_#gbr','StartTime':'Wed Jul 01 05:23:46 AEST 2015','Value':6.585858526975398','Opion':'X'}, {'EventName':'UQ_#antarcticvortex','StartTime':'Sat Jun 27 03:56:00 AEST 2015','Value':0.16411361011304804','Opion':'X'}, {'EventName':'UQ_#matildas','StartTime':'Sun Jun 28 06:17:00 AEST 2015','Value':9.766495114239737','Opion':'P'}, {'EventName':'UQ_#mdpisustainability','StartTime':'Thu Jun 18 08:50:34 AEST 2015','Value':8.72914446616367','Opion':'P'}, {'EventName':'UQ_#antarcticvortex','StartTime':'Sat Jun 27 03:56:00 AEST 2015','Value':7.992928017279233','Opion':'X'}, {'EventName':'UQ_#matildas','StartTime':'Sun Jun 28 06:17:00 AEST 2015','Value':7.680516497116013','Opion':'P'}, {'EventName':'UQ_#mdpisustainability','StartTime':'Thu Jun 18 08:50:34 AEST 2015','Value':5.574805144965206','Opion':'P'}]};
+                                    
+                            //var data=data_j.Event;
+                            
+                            // Create Separate StartTime and Time, this allows us to draw them
+                            // on separate axes.  Despite the time axis only displaying
+                            // the time portion, the whole date is used so they need to
+                            // have the same date allocated
+                            data.forEach(function (d) {
+                                //d["Day"] = d["StartTime"].substring(4, d["StartTime"].length - 5);
+                                //d["Day"] =new Date(d["StartTime"]);
+                                //d["Day"] =d["Day"].format('yyyy-mm-dd');
+                                    var temp1=new Date(d["StartTime"]);
+                                   var curr_date =temp1.getDate();
+                                    var curr_month =temp1.getMonth() + 1; //Months are zero based
+                                    var curr_year = temp1.getFullYear();
+                                    console.log();
+                                                                
+                                  d["Day"] =curr_year+ "-" + curr_month + "-" + curr_date 
+                                 // alert(d["Day"]);
+                                d["Time of Day"] =
+                                        "2000-01-01 " + d["StartTime"].substring(d["StartTime"].length - 5);
+                                //alert(d["Time of Day"]);
+                            }, this);
+
+                            //Title,Keys,StartTime,Emotion,Score,Location                            
+                            var colorArray = [];
+                            // Create the chart as usual
+                            var myChart = new dimple.chart(svg, data);
+                            myChart.setBounds(70, 40, 490, 320)
+
+                            // Add the x axis reading dates in the format 01 Jan 2012
+                            // and displaying them 01 Jan
+                            //var x = myChart.addTimeAxis("x", "Day", "%d %b %Y", "%d %b");
+                            var x = myChart.addTimeAxis("x", "Day", "%Y-%m-%d", "%d %b");
+                            // Add the y axis reading dates and times but only outputting
+                            // times.  
+                            var y = myChart.addTimeAxis("y", "Time of Day", "%Y-%m-%d %H:%M", "%H:%M");
+                            // Size the bubbles by volume
+                            var z = myChart.addMeasureAxis("z", "Value");
+                            // Setting min and max dates requires them to be set
+                            // as actual javascript date objects
+                            x.overrideMin = new Date("2015-05-20");
+                            x.overrideMax = new Date("2015-09-06"); //Math.max(new StartTime(data.StartTime)); 
+                            y.overrideMin = new Date("01/01/2000 0:00");
+                            y.overrideMax = new Date("01/01/2000 23:59");
+                            // Show a label for every 4 weeks.
+                            x.timePeriod = d3.time.weeks;
+                            x.timeInterval = 4;
+                            // Control bubble sizes by setting the max and min values    
+                            z.overrideMin = 1;
+                            z.overrideMax = 3000;
+                            // Add the bubble series for shift values first so that it is
+                            // drawn behind the lines
+                            myChart.addSeries("EventName", dimple.plot.bubble);
+                            // Add the line series on top of the bubbles.  The bubbles
+                            // and line points will naturally fall in the same places
+                            var s = myChart.addSeries("EventName", dimple.plot.line);
+                            // Add line markers to the line because it looks nice
+                            s.lineMarkers = true;
+
+                            data.forEach(function (d) {
+                                var colorArray = '#FF00FF';
+                                if (d.Opion== 'P')
+                                    colorArray = '#111111';
+                                else if (d.Opion == 'N')
+                                    colorArray = '#00FF00';
+                                
+                                    
+                                
+                                myChart.assignColor(d.EventName, colorArray, colorArray , 0.15);
+                                
+                            }, this);
+
+                             
+                                  
+                            // Show a legend
+                            myChart.addLegend(180, 10, 360, 20, "right");
+                           // myChart.addLegend(80, 10, 260, 20);
+                            
+
+                             //and append it to your page somewhere
+                            // svg.append(legend);                            
+                            // Draw everything
+                            myChart.draw(100);
+                            
+                            d3.selectAll("circle").on("click", function (e) {
+                                //alert("click detect"+$(this).parent().attr('id'));
+                                
+                                //alert("click detect"+$(this).closest('circle').attr('id'));
+                                var idpr = $(this).closest('circle').attr('id');
+                                //alert('ID of the parent of the image is:\n'+ idpr);
+                                var topping = e.EventDate;
+                    //<circle id="dimple--uq-gpem-uq-fri-jul-17-2015-00-00-00-gmt-1000--aest--sat-jan-01-2000-02-52-00-gmt-1000--aest----marker"
+                                var EventName = idpr.substring(7);
+                                var n= EventName.indexOf("--");
+                                EventName=EventName.substring(0,n);
+                                
+                                //alert('The user selected facebook' + topping);
+                                //window.open("https://www.facebook.com/" + topping);
+                                //window.open("https://www.facebook.com/" + topping);
+                                window.open("function/showEventTopics.jsp?word=" + topping +"&eventName="+ encodeURIComponent(EventName), "", "left=200, top=200, width=1000, height=500");
+                                
+                               // s.lineMarkers = false;
+                                //myChart.draw(1000);
+                            });
+//                        });
+                //              });
+            }
+        </script>
+    </div>
+</html>

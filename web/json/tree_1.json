@@ -1,0 +1,230 @@
+{
+    "name": "QLD",
+    "children": [
+        {
+            "name": "University",
+            "children": [
+                {
+                    "name": "UQ",
+                    "children": [
+                        {
+                            "name": "Staff",
+                            "size": 938
+                        },
+                        {
+                            "name": "Education",
+                            "children": [
+                                {
+                                    "name": "UQx",
+                                    "size": 1938
+                                }
+                            ]
+                        },
+                        {
+                            "name": "News",
+                            "parent": "QLD,University,UQ",
+                            "children": [
+                                {
+                                    "name": "Health",
+                                    "size": 1938
+                                }
+                            ]
+                        },
+                        {
+                            "name": "Living",
+                            "children": [
+                                {
+                                    "name": "Campus",
+                                    "size": 1938
+                                }
+                            ]
+                        },
+                        {
+                            "name": "Market",
+                            "parent": "QLD,University,UQ",
+                            "children": [
+                                {
+                                    "name": "Living",
+                                    "size": 1938
+                                }
+                            ]
+                        },
+                        {
+                            "name": "School",
+                            "children": [
+                                {
+                                    "name": "BEL",
+                                    "size": 1938
+                                }
+                            ]
+                        },
+                        {
+                            "name": "CreateChange",
+                            "children": [
+                                {
+                                    "name": "GenderinEquity",
+                                    "size": 193
+                                },
+                                {
+                                    "name": "Food security",
+                                    "size": 19
+                                },
+                                {
+                                    "name": "Superbugs",
+                                    "size": 9
+                                }
+                            ]
+                        },
+                        {
+                            "name": "Course",
+                            "parent": "QLD,University,UQ",
+                            "children": [
+                                {
+                                    "name": "Engineering",
+                                    "parent": "QLD,University,UQ,Course",
+                                    "size": 938
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "name": "QUT",
+                    "parent":"QLD,University",
+                    "children": [
+                        {
+                            "name": "Business",
+                            "parent": "QLD,University,QUT",
+                            "size": 3534
+                        },
+                        {
+                            "name": "LinkDistance",
+                            "parent": "QLD,University,QUT",
+                            "size": 5731
+                        },
+                        {
+                            "name": "MaxFlowMinCut",
+                            "parent": "QLD,University,QUT",
+                            "size": 7840
+                        },
+                        {
+                            "name": "ShortestPaths",
+                            "parent": "QLD,University,QUT",
+                            "size": 5914
+                        },
+                        {
+                            "name": "SpanningTree",
+                            "parent": "QLD,University,QUT",
+                            "size": 3416
+                        }
+                    ]
+                },
+                {
+                    "name": "Griffith University",
+                    "parent":"QLD,University",
+                    "children": [
+                        {
+                            "name": "AspectRatioBanker",
+                            "parent": "QLD,University,Griffith University",
+                            "size": 7074
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "Brisbane",
+            "parent":"QLD",
+            "children": [
+                {
+                    "name": "Fortitude valley",
+                    "parent":"QLD,Brisbane",
+                    "size": 17010
+                },
+                {
+                    "name": "Brisbane City",
+                    "parent":"QLD,Brisbane",
+                    "size": 5842
+                },
+                {
+                    "name": "Sports",
+                    "parent":"QLD,Brisbane",
+                    "children": [
+                        {
+                            "name": "Hockey",
+                            "parent":"QLD,Brisbane,Sports",
+                            "size": 1983
+                        },
+                        {
+                            "name": "Cycling",
+                            "parent":"QLD,Brisbane,Sports",
+                            "size": 1983
+                        },
+                        {
+                            "name": "Soccr",
+                            "parent":"QLD,Brisbane,Sports",
+                            "size": 2042
+                        }
+                    ]
+                },
+                {
+                    "name": "Food",
+                    "parent":"QLD,Brisbane",
+                    "size": 1041
+                },
+                {
+                    "name": "Tween",
+                    "parent":"QLD,Brisbane",
+                    "size": 6006
+                }
+            ]
+        },
+        {
+            "name": "Food",
+            "parent":"QLD",
+            "children": [
+                {
+                    "name": "Caffee",
+                    "parent":"QLD,Food",
+                    "size": 2220
+                },
+                {
+                    "name": "Burger",
+                    "parent":"QLD,Food",
+                    "size": 2220
+                },
+                {
+                    "name": "Champagne",
+                    "parent":"QLD,Food",
+                    "size": 2220
+                }
+            ]
+        },
+        {
+            "name": "Party",
+            "parent":"QLD",
+            "children": [
+                {
+                    "name": "DirtySprite",
+                    "parent":"QLD,Party",
+                    "size": 8833
+                },
+                {
+                    "name": "LineSprite",
+                    "parent":"QLD,Party",
+                    "size": 1732
+                },
+                {
+                    "name": "RectSprite",
+                    "parent":"QLD,Party",
+                    "size": 3623
+                },
+                {
+                    "name": "TextSprite",
+                    "parent":"QLD,Party",
+                    "size": 10066
+                }
+            ]
+        }
+    ]
+}

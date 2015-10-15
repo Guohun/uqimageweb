@@ -1,0 +1,63 @@
+{
+    "name": "University",
+    "Opion": "X",
+    "Weight": 9,
+    "children": [
+        {
+            "name": "UQ",
+            "Opion": "X",
+            "Weight": 7,
+            "children": [
+                {
+                    "name": "Living",
+                    "Opion": "X",
+                    "Weight": 1
+                },
+                {
+                    "name": "Research",
+                    "Opion": "X",
+                    "Weight": 2,
+                    "children": [
+                        {
+                            "name": "Research",
+                            "Opion": "X",
+                            "Weight": 1,
+                            "children": [
+                                {
+                                    "name": "fossilfriday",
+                                    "Opion": "X",
+                                    "Weight": 1
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "name": "Studying",
+                    "Opion": "X",
+                    "Weight": 1
+                },
+                {
+                    "name": "Safety",
+                    "Opion": "X",
+                    "Weight": 1
+                },
+                {
+                    "name": "Teaching",
+                    "Opion": "X",
+                    "Weight": 1
+                }
+            ]
+        },
+        {
+            "name": "QUT",
+            "Opion": "X",
+            "Weight": 1
+        },
+        {
+            "name": "USQ",
+            "Opion": "X",
+            "Weight": 1
+        }
+    ]
+}
