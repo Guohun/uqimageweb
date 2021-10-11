@@ -1,0 +1,114 @@
+<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+<script src="https://maps.googleapis.com/maps/api/js?v=3.exp&libraries=visualization"></script>
+<script type="text/javascript" src="https://www.google.com/jsapi"></script>
+<script src="./d3/jquery.js"></script>
+<script src="./d3/d3.js"></script>
+<script src="./d3/css-pop.js"></script>
+<script src="./d3/d3-tip.js"></script>
+<script src="js/d3_gauge1.js"></script>
+        
+<script>
+            var gauges = [];
+            function createGauge(name, label)
+            {
+                var config =
+                        {
+                            size: 100,
+                            label: label,
+                            minorTicks: 5
+                        }
+                config.redZones = [];
+                config.redZones.push({from: 60, to: 100});
+                config.yellowZones = [];
+                config.yellowZones.push({from: 30, to: 60});
+                if (name=='fire')
+                    config.myfill= "#ff0";
+                else 
+                    config.myfill= "#0f0";
+                
+                gauges[name] = new Gauge(name + "GaugeContainer", config);
+                gauges[name].render();
+            }
+            var g_csv=[];
+            function createGauges()
+            {
+                $.ajax({url: "showrealevents", success: function (result) {
+                        $("#result").html(result);
+                        var new_data = "name,nums,company\n" + result.trim();
+                        g_csv= d3.csv.parse(new_data);
+                        
+                        createGauge('fire', g_csv[0].company+":"+g_csv[0].name);
+                        createGauge('crime', g_csv[1].company+":"+g_csv[1].name);
+
+                    }});
+
+            }
+            function updateGauges()
+            {
+                $.ajax({url: "showrealevents", success: function (result) {
+                        $("#result").html(result);
+                        var new_data = "name,nums,company\n" + result.trim();
+                        g_csv= d3.csv.parse(new_data);
+                        var i = 0;
+                        for (var key in gauges)
+                        {
+                            gauges[key].redraw(Number(g_csv[i].nums));
+                            i++;
+                        }
+                    }});
+            }
+            function eventinitialize()
+            {
+                createGauges();
+                setInterval(updateGauges, 50000);
+            }
+            function guaguesclick(keyword){
+                
+                mypopupWindow=window.open("function/showEmergence.jsp?Eventname="+keyword, "mywindow", "left=200, top=200, width=1000, height=800","status=1");                
+                //http://localhost:8081/studying/function/showEmergence.jsp?Eventname=QUT_Post &TwList=
+            }
+            
+            
+        </script>
+
+<div class="header"> 
+	<div class="header-inner">
+		<img src="./image/uqlogo.png" alt="uqlogo"/>
+		<h1>UQ Image</h1>
+		<h2>Seeing Opinions from Social Media<font color="YELLOW"> (Under Construction)</font>                    
+                    </h2>
+                <div class="mGaugeContainer">  <span id="fireGaugeContainer" onclick="guaguesclick(g_csv[0].name);"></span>  </div>
+                <div class="cGaugeContainer">   <span id="crimeGaugeContainer"  onclick="guaguesclick(g_csv[1].name);"></span>   </div>     
+        
+           
+                
+			<div onclick ="window.open('http://www.uqimage.com/studying/pdf.jsp', '_target');"class="print-button">
+				<img src="image/print.png" alt="Print Report"><br/>
+				<a >Print Report</a>
+			</div>
+	</div>
+</div>
+
+<!-- old code, can be remove
+    <table class="header"> 
+   <colgroup>
+       <col span="1" style="width: 25%;">
+       <col span="1" style="width: 75%;">
+    </colgroup>        <tr>	
+            <td class="header-inner">
+                <img src="./image/uqlogo.png" alt="uqlogo"/>
+            </td>
+            <td class="header-inner">
+                <h1>UQ Image</h1>
+                <h2>Seeing Options from Social Media <font color="YELLOW">(Under Construction)</font></h2>
+            </td>
+        </tr>
+        <tr >
+            <td style ="background:#000;color:#fff; display:inline-block;height:15px;">            
+            </td>
+            <td style ="background:#000;color:#fff; display:inline-block;height:15px;">
+            </td>            
+        </tr>
+    </table>
+    
+-->
